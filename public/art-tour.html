@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walkerhill Hotel Art Experience</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            color: #444;
+        }
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .art-section {
+            margin-bottom: 40px;
+        }
+        .art-section img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        .highlight {
+            background-color: #f9f9f9;
+            border-left: 4px solid #ddd;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        .author {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .author img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .author p {
+            margin: 0;
+            color: #555;
+            font-size: 16px;
+        }
+        .author p span {
+            font-weight: bold;
+            color: #333;
+        }
+		.container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .question h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .arti-response {
+            display: none;
+            overflow: hidden;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e5e5ea;
+            border-radius: 10px;
+            color: #333;
+            font-size: 16px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .arti-response img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: top;
+        }
+        .arti-response p {
+            display: inline-block;
+            margin: 0;
+            vertical-align: top;
+            max-width: calc(100% - 60px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Walkerhill Hotel: An Artistic Retreat</h1>
+    <p>Explore the unique art pieces and experiences offered by Walkerhill Hotel, blending history, luxury, and artistic sensibility.</p>
+</header>
+
+<div class="content">
+    <!-- Author Section -->
+    <div class="author">
+        <img src="arti.webp" alt="Arti Avatar">
+        <p>
+            Written by <span>Arti</span>, a passionate art enthusiast who loves exploring creative spaces and sharing inspiring experiences.
+        </p>
+    </div>
+
+    <div class="art-section">
+        <h2>1. The Grand Lobby: Dale Chihuly's Chandelier</h2>
+        <img src="chihuly.jpg" alt="Dale Chihuly Chandelier">
+        <p>Located in the Grand Walkerhill Hotel lobby, Dale Chihuly's mesmerizing chandelier transforms the space into an artistic wonderland. Its bold colors and intricate shapes capture nature's essence, providing visitors with a unique artistic experience.</p>
+    </div>
+    <!-- Q&A Section -->
+    <div class="container">
+		<!-- Question 1 -->
+		<div class="question" onclick="redirectToArti('치훌리의 또 다른 샹들리에 작품은 어떤 장소에 설치되어 있나요?')">
+			<h3>치훌리의 또 다른 샹들리에 작품은 어떤 장소에 설치되어 있나요?</h3>
+			<div class="arti-response">
+				<img src="arti.webp" alt="Arti Avatar">
+				<p>치훌리의 또 다른 샹들리에 작품은 라스베이거스의 벨라지오 호텔 로비에 설치되어 있습니다. 이 작품은 영화 ‘오션스 일레븐’에서도 등장하며, 방문객들에게 깊은 인상을 남깁니다.</p>
+			</div>
+		</div>
+	
+		<!-- Question 2 -->
+		<div class="question" onclick="redirectToArti('영화 ‘오션스 일레븐’에 등장한 샹들리에와 워커힐 작품의 차이는 무엇인가요?')">
+			<h3>영화 ‘오션스 일레븐’에 등장한 샹들리에와 워커힐 작품의 차이는 무엇인가요?</h3>
+			<div class="arti-response">
+				<img src="arti.webp" alt="Arti Avatar">
+				<p>두 작품 모두 치훌리 특유의 유리 조각 스타일을 보여주지만, 벨라지오 호텔의 작품은 훨씬 더 넓은 규모와 복잡한 디자인을 자랑합니다. 반면, 워커힐 샹들리에는 보다 아늑하고 공간에 어울리는 형태로 제작되었습니다.</p>
+			</div>
+		</div>
+	
+		<!-- Question 3 -->
+		<div class="question" onclick="redirectToArti('데일 치훌리가 유리 조각가로 유명해진 이유는 무엇인가요?')">
+			<h3>데일 치훌리가 유리 조각가로 유명해진 이유는 무엇인가요?</h3>
+			<div class="arti-response">
+				<img src="arti.webp" alt="Arti Avatar">
+				<p>데일 치훌리는 유리를 매개로 자연과 예술의 경계를 허물며, 독창적이고 화려한 디자인을 선보였습니다. 특히 그의 작품은 거대한 스케일과 자연에서 영감을 받은 유기적인 형태로 유명합니다. 이는 전 세계적으로 그의 작품을 아이콘으로 자리 잡게 한 이유입니다.</p>
+			</div>
+		</div>
+	</div>
+	
+	
+    <div class="art-section">
+        <h2>2. Vista Hotel: Park Yong-ho's Metal Painting</h2>
+        <img src="parkyongho.jpg" alt="Park Yong-ho Metal Painting">
+        <p>At the entrance of Vista Hotel's Walker Hall, Park Yong-ho's metal artworks seamlessly blend metal and painting, exploring harmony and balance. The pieces invite viewers to connect with their emotions through delicate textures and inspired designs.</p>
+    </div>
+
+    <div class="art-section">
+        <h2>3. Vista Hotel: A.I Mirror</h2>
+        <img src="aimirror.jpg" alt="A.I Mirror">
+        <p>The A.I Mirror near Vista Hotel's buffet showcases real-time media art, transforming visitor appearances into iconic art styles from Picasso, Chagall, and Magritte. This interactive experience creates a one-of-a-kind digital masterpiece for every guest.</p>
+    </div>
+
+    <div class="art-section">
+        <h2>4. Basement 3F: Lee Jae-hyo's Wooden Sphere</h2>
+        <img src="leejaehyo.jpg" alt="Lee Jae-hyo Wooden Sphere">
+        <p>Lee Jae-hyo's sculptures on Basement 3F combine wood and nails to create works that balance raw materials and aesthetic appeal. The spherical shapes evoke a sense of connection to nature and stimulate the viewer's artistic senses.</p>
+    </div>
+
+    <div class="art-section">
+        <h2>5. Myungwolgwan: Jeong Da-woon’s Fabric Art</h2>
+        <img src="jeongdaun.jpg" alt="Jeong Da-woon Fabric Art">
+        <p>At the Myungwolgwan restaurant, Jeong Da-woon’s intricate fabric drawings highlight layers of colors and textures. These artworks harmonize with the serene surroundings, offering an immersive blend of art and traditional Korean barbecue.</p>
+    </div>
+
+    <div class="highlight">
+        <p>Walkerhill Hotel redefines hospitality by integrating art, luxury, and sensory experiences into every corner of its space. Whether through breathtaking views, curated fragrances, or artistic expressions, it leaves visitors with unforgettable memories and a renewed appreciation for aesthetics.</p>
+    </div>
+</div>
+<script>
+    function toggleResponse(questionElement) {
+        const response = questionElement.querySelector('.arti-response');
+        if (response.style.display === "block") {
+            response.style.display = "none";
+        } else {
+            response.style.display = "block";
+        }
+    }
+
+    function redirectToArti(question) {
+        // Encode the question to ensure it's safe for use in a URL
+        const encodedQuestion = encodeURIComponent(question);
+        // Redirect to arti.html with the question as a query parameter
+        window.location.href = `arti.html?q=${encodedQuestion}`;
+    }
+	function askArti() {
+		const input = document.getElementById("questionInput");
+		const question = input.value.trim();
+		const responseContainer = document.getElementById("artiResponse");
+
+		if (question) {
+			// Clear input
+			input.value = "";
+
+			// Display user question
+			const userMessage = document.createElement("div");
+			userMessage.className = "message user";
+			userMessage.innerHTML = `<p>${question}</p>`;
+			responseContainer.appendChild(userMessage);
+
+			// Simulate Arti's response
+			setTimeout(() => {
+				const artiMessage = document.createElement("div");
+				artiMessage.className = "message arti";
+				artiMessage.innerHTML = `
+					<img src="arti.webp" alt="Arti">
+					<p>That's a fascinating question! Let me share some details about Dale Chihuly.</p>`;
+				responseContainer.appendChild(artiMessage);
+
+				// Scroll to the latest message
+				responseContainer.scrollTop = responseContainer.scrollHeight;
+			}, 1000);
+
+			// Scroll to the latest message
+			responseContainer.scrollTop = responseContainer.scrollHeight;
+		}
+	}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, Uncommon Walkers!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .avatar {
+            text-align: center;
+            width: 150px;
+            cursor: pointer;
+        }
+        .avatar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .avatar img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        .avatar p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Hello, Uncommon Walkers!</h1>
+
+<div class="avatar-container">
+    <!-- 아트 아바타 -->
+    <div class="avatar" onclick="window.location.href='/art-tour.html'">
+        <img src="arti.webp" alt="아트 아바타">
+        <p>Arti</p>
+    </div>
+
+    <!-- 먹방 블로거 아바타 -->
+    <div class="avatar" onclick="window.location.href='yummi.html'">
+        <img src="yummi.webp" alt="먹방 블로거 아바타">
+        <p>Yummi</p>
+    </div>
+
+    <!-- 호캉스 아바타 -->
+    <div class="avatar" onclick="window.location.href='luxie.html'">
+        <img src="luxie.webp" alt="호캉스 아바타">
+        <p>Luxie</p>
+    </div>
+
+    <!-- 역사 아바타 -->
+    <div class="avatar" onclick="window.location.href='historia.html'">
+        <img src="historia.webp" alt="역사 아바타">
+        <p>Historia</p>
+    </div>
+
+    <!-- 놀기 좋아하는 아바타 -->
+    <div class="avatar" onclick="window.location.href='funzo.html'">
+        <img src="funzo.webp" alt="놀기 좋아하는 아바타">
+        <p>Funzo</p>
+    </div>
+</div>
+
+</body>
+</html>

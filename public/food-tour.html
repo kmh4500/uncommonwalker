@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워커힐 호텔 레스토랑</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .author p {
+            margin: 0;
+            font-size: 16px;
+            color: #555;
+        }
+        .restaurant {
+            margin-bottom: 40px;
+        }
+        .restaurant img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .restaurant h2 {
+            color: #555;
+        }
+        .restaurant p {
+            margin: 5px 0;
+        }
+        iframe {
+            display: block;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 360px;
+            height: 640px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .questions {
+            margin-top: 20px;
+        }
+        .question {
+            margin-bottom: 15px;
+            cursor: pointer;
+            color: #007BFF;
+        }
+        .answer {
+            display: none;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #007BFF;
+        }
+    </style>
+    <script>
+        function redirectToYummi(question) {
+            // Encode the question to ensure it's safe for use in a URL
+            const encodedQuestion = encodeURIComponent(question);
+            // Redirect to arti.html with the question as a query parameter
+            window.location.href = `yummi.html?q=${encodedQuestion}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>워커힐 호텔 레스토랑</h1>
+        <div class="author">
+            <img src="yummi.webp" alt="Yummi Avatar">
+            <p>Written by Yummi</p>
+        </div>
+        <div class="restaurant">
+            <h2>피자힐 - 워커힐 호텔</h2>
+
+            <img src="피자힐.jpg" alt="피자힐">
+            <h3>위치 및 분위기</h3>
+            <ul>
+                <li>서울 광진구 비스타 워커힐 호텔 내에 위치.</li>
+                <li>아차산 숲 속 언덕 위에서 한강과 서울 도심의 전경을 조망.</li>
+                <li>김수근 건축가의 대표작으로 독특하고 아름다운 건축물.</li>
+            </ul>
+    
+            <h3>메뉴 및 특징</h3>
+            <ul>
+                <li>이탈리안 정통 피자 전문점.</li>
+                <li>대표 메뉴: 콤비네이션 피자, 해산물 피자, 갈릭 새우 피자.</li>
+                <li>파스타, 샐러드 등 다양한 이탈리안 요리 제공.</li>
+                <li>재료 본연의 맛을 살린 심심한 간이 특징.</li>
+            </ul>
+    
+            <h3>가격 및 서비스</h3>
+            <ul>
+                <li>라지 사이즈 피자: 약 8만 원대.</li>
+                <li>커플 세트 메뉴 및 네이버 예약 시 10% 할인 혜택.</li>
+                <li>피자가 식으면 데워주는 세심한 서비스 제공.</li>
+            </ul>
+    
+            <h3>운영 시간 및 예약</h3>
+            <ul>
+                <li>운영 시간: 매일 11:30 ~ 22:00.</li>
+                <li>예약 추천, 현장 방문 시 대기 후 입장 가능.</li>
+            </ul>
+
+            <div class="questions">
+                <div class="question" onclick="redirectToYummi('워커힐 피자힐이 1988년에 개업했을 당시, 한국의 피자 시장 상황은 어떠했나요?')">
+                    워커힐 피자힐이 1988년에 개업했을 당시, 한국의 피자 시장 상황은 어떠했나요?
+                </div>
+                <div class="answer" id="answer1">
+                    1988년은 한국에서 피자가 점차 대중화되던 시기로, 피자 전문점이 많지 않았고 피자는 고급 음식으로 여겨졌습니다. 피자힐은 이 시기에 고급스러운 환경에서 정통 이탈리안 피자를 제공하며 시장에 차별화를 두었습니다.
+                </div>
+
+                <div class="question" onclick="redirectToYummi('피자힐 건축물이 한국 현대 건축사에서 갖는 의의는 무엇인가요?')">
+                    피자힐 건축물이 한국 현대 건축사에서 갖는 의의는 무엇인가요?
+                </div>
+                <div class="answer" id="answer2">
+                    피자힐 건축물은 자연 친화적인 디자인과 독창적인 구조로 한국 현대 건축사에서 중요한 사례로 평가받습니다. 숲속 언덕 위의 위치와 한강 전망을 살린 설계는 당시 건축 트렌드의 선구적인 예로 꼽힙니다.
+                </div>
+
+                <div class="question" onclick="redirectToYummi('피자힐에서 35년 동안 판매된 피자는 몇 개인가요?')">
+                    피자힐에서 35년 동안 판매된 피자는 몇 개인가요?
+                </div>
+                <div class="answer" id="answer3">
+                    피자힐에서는 35년 동안 약 500만 판 이상의 피자가 판매되었습니다. 이는 워커힐 피자힐의 꾸준한 인기와 고객 충성도를 보여줍니다.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="restaurant">
+            <h2>명월관</h2>
+            <img src="명월관.jpg" alt="명월관">
+            <p><strong>타입:</strong> 한우 숯불구이 전문점</p>
+            <p>프라이빗한 공간을 제공하며 한옥 스타일의 인테리어와 야외 정원이 특징입니다.</p>
+            <p>워커힐 호텔 내 숯불구이 전문점으로 참숯에서 굽는 양념갈비, 등심구이 등이 인기 있습니다.</p>
+            <p>한우 특선 모둠, 생갈비구이, 육회, 우설 등의 다양한 메뉴들이 있고, 국내산 한우로 만든 한우영양갈비탕을 식사로 많이 찾습니다.</p>
+            <p>인테리어는 궁궐 별채처럼 화려한 한옥으로 꾸며져 있으며 최고의 서비스를 느낄 수 있습니다.</p>
+            <iframe src="https://www.youtube.com/embed/lzJ8V8z35Uo" title="YouTube video"             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/ZI2FVObUuUM" title="YouTube video"></iframe>
+            <iframe src="https://www.youtube.com/embed/ROJL9YavMCs" title="YouTube video"></iframe>
+        </div>
+
+      
+        <div class="restaurant">
+            <h2>온달</h2>
+            <img src="온달.jpg" alt="온달">
+            <p><strong>타입:</strong> 한식 전문 레스토랑</p>
+            <p>조선시대 사대부 요리와 궁중음식을 재해석한 메뉴를 제공합니다.</p>
+            <p>팔도의 제철재료를 활용하여 요리를 만듭니다.</p>
+        </div>
+
+        <div class="restaurant">
+            <h2>금룡</h2>
+            <img src="금룡.jpg" alt="금룡">
+            <p><strong>타입:</strong> 중식 레스토랑</p>
+            <p>광동 요리를 기반으로 중국 황제의 진귀한 요리를 재해석합니다.</p>
+        </div>
+
+        <div class="restaurant">
+            <h2>더파빌리온</h2>
+            <img src="더파빌리온.jpg" alt="더파빌리온">
+            <p><strong>타입:</strong> 로비 라운지</p>
+            <p>커피, 차, 시즌 프로모션 음료와 디저트를 제공합니다.</p>
+        </div>
+    </div>
+</body>
+</html>

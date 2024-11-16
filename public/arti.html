@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Arti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .author {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .author p {
+            margin: 0;
+            color: #555;
+            font-size: 16px;
+        }
+        .author span {
+            font-weight: bold;
+            color: #333;
+        }
+        .chat-container {
+            flex: 1;
+            padding: 10px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .message.user {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        .message.user p {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+            margin: 0;
+        }
+        .message.arti img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .message.arti p {
+            background-color: #e5e5ea;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+            margin: 0;
+        }
+        .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            border-top: 1px solid #ddd;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .chat-input button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Chat with Arti</h1>
+</header>
+
+<div class="author">
+    <img src="arti.webp" alt="Arti Avatar">
+    <p>
+        안녕하세요! 저는 <span>Arti</span>입니다. 예술을 사랑하며 창의적인 공간과 특별한 경험을 탐구하고 여러분과 나누는 것을 즐깁니다.
+    </p>
+</div>
+
+<div class="chat-container" id="chatContainer">
+    <!-- Chat messages will appear here -->
+</div>
+
+<div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    // Function to get URL parameter
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    async function sendMessage(userMessage) {
+        const chatContainer = document.getElementById("chatContainer");
+        if (!userMessage) {
+            userMessage = document.getElementById("chatInput").value;
+        }
+        if (!userMessage) {
+            return;
+        }
+        // 사용자 메시지 표시
+        const userDiv = document.createElement("div");
+        userDiv.className = "message user";
+        userDiv.innerHTML = `<p>${userMessage}</p>`;
+        chatContainer.appendChild(userDiv);
+
+        // 고유 ID 생성
+        const artiTypingId = `artiTyping-${Date.now()}`;
+
+        // Arti 메시지 영역 추가
+        const artiDiv = document.createElement("div");
+        artiDiv.className = "message arti";
+        artiDiv.innerHTML = `
+            <img src="arti.webp" alt="Arti">
+            <p id="${artiTypingId}">...</p>`;
+        chatContainer.appendChild(artiDiv);
+
+        const artiTyping = document.getElementById(artiTypingId);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        try {
+            const response = await fetch("/api/gpt4o", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ 
+                    agent: "arti",
+                    userMessage: userMessage }),
+            });
+
+            if (!response.body) {
+                throw new Error("No response body");
+            }
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = ""; // 누적된 데이터
+            let artiResponse = ""; // 전체 응답 데이터
+
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+
+                const chunk = decoder.decode(value);
+                buffer += chunk;
+
+                const lines = buffer.split("\n");
+                buffer = lines.pop(); // 마지막 줄은 다음 청크에서 처리
+
+                for (const line of lines) {
+                    if (line.startsWith("data: ")) {
+                        const jsonString = line.replace("data: ", "");
+
+                        if (jsonString === "[DONE]") {
+                            artiTyping.innerHTML = formatText(artiResponse.trim());
+                            return;
+                        }
+
+                        try {
+                            const content = jsonString || "";
+
+                            // 한 글자씩 부드럽게 표시
+                            for (const char of content) {
+                                artiResponse += char;
+
+                                // 텍스트 포맷팅 처리
+                                artiTyping.innerHTML = formatText(artiResponse);
+                                await delay(5); // 글자 출력 속도 (50ms)
+                            }
+                        } catch (err) {
+                            console.error("Error parsing JSON:", err);
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            console.error("Error fetching GPT-4O response:", error);
+            artiTyping.textContent = "Sorry, I couldn't connect to the server.";
+        }
+    }
+
+    // 텍스트 포맷팅: **텍스트**를 <b>텍스트</b>로 변환
+    function formatText(text) {
+        return text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+    }
+
+    // 지연 함수
+    function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+
+
+    // Check for question parameter in URL
+    const initialQuestion = getQueryParam("q");
+    if (initialQuestion) {
+        sendMessage(initialQuestion);
+    }
+</script>
+
+</body>
+</html>
