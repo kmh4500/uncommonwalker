@@ -131,7 +131,12 @@
 </div>
 
 <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Type a message..." />
+    <input
+        type="text"
+        id="chatInput"
+        placeholder="Type a message..."
+        onkeydown="handleKeyDown(event)"
+    />
     <button onclick="sendMessage()">Send</button>
 </div>
 
@@ -146,6 +151,7 @@
         const chatContainer = document.getElementById("chatContainer");
         if (!userMessage) {
             userMessage = document.getElementById("chatInput").value;
+            document.getElementById("chatInput").value = ""
         }
         if (!userMessage) {
             return;
@@ -248,6 +254,14 @@
     const initialQuestion = getQueryParam("q");
     if (initialQuestion) {
         sendMessage(initialQuestion);
+    }
+    // Enter 키를 감지하는 함수
+    function handleKeyDown(event) {
+        if (event.isComposing || event.key !== 'Enter') {
+            return;
+        }
+
+        sendMessage();
     }
 </script>
 
